@@ -71,7 +71,7 @@ namespace RobotVanga
 
                     SetAllColors(Color.DimGray);
 
-                    if (!Double.IsNaN(addictionAngle) && EnemyDistance > 10 && EnemyVelocity > 1 && !IsTurning && !IsRobotHitting)
+                    if (!Double.IsNaN(addictionAngle) && EnemyDistance > 10 /*&& EnemyVelocity > 1*/ && !IsTurning && !IsRobotHitting)
                     {
                         TurnGunRight(gunAngle + addictionAngle);
                     }
