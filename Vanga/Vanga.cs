@@ -2,7 +2,7 @@
 using System.Drawing;
 using Robocode;
 
-namespace Robot
+namespace RobotVanga
 {
     // ReSharper disable once IdentifierTypo
     public class Vanga : Robocode.Robot
@@ -63,6 +63,9 @@ namespace Robot
                 {
                     var gunAngle = Heading - GunHeading + EnemyBearing;
                     var power = 500 / EnemyDistance;
+
+                    if (power < 0.3) power = 0.3;
+
                     var addictionAngle = CalculateAddictionGunTurnAngle(power);
                     gunAngle = gunAngle.CalibrateAngle();
 
