@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using Robocode;
+using Robot;
 
 namespace RobotVanga
 {
@@ -50,6 +51,7 @@ namespace RobotVanga
             PreviousState = State;
             State = State.Wall;
         }
+
         public override void OnScannedRobot(ScannedRobotEvent e)
         {
             if (e.Time - LastShotTime > 0.4)
@@ -111,6 +113,7 @@ namespace RobotVanga
 
             return angle * 180 / Math.PI;
         }
+
         private bool GetDirection(double x1, double x2, double x3, double y1, double y2, double y3)
             => ((x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)) * EnemyVelocity > 0;
         private static double CalculateAngleBySides(double a1, double a2, double a3)
@@ -158,27 +161,5 @@ namespace RobotVanga
 
             State = State.Usual;
         }
-    }
-
-    public static class NumericExtensions
-    {
-        public static double ToRadians(this double angle) 
-            => (Math.PI / 180) * angle;
-
-        public static double CalibrateAngle(this double angle)
-        {
-            if (angle > 180) angle -= 360;
-            else if (angle < -180) angle += 360;
-
-            return angle;
-        }
-    }
-
-    public enum State
-    {
-        Wall,
-        Usual,
-        Run,
-        HitByBullet
     }
 }
